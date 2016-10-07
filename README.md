@@ -45,6 +45,12 @@ how it works are included here.
 
 # Power On / Power Off
 
+![power on / power off breadboard](https://github.com/craic/arduino_power/blob/master/images/arduino_power_breadboard_1.png)
+
+
+
+This example program simply blinks the Arduino on board yellow LED which is attached to pin 13.
+
 
 
 
@@ -100,7 +106,6 @@ void loop() {
 
 
 
-![power on / power off breadboard](https://github.com/craic/arduino_power/blob/master/images/arduino_power_breadboard_1.png)
 
 
 # Low Battery Shutdown
