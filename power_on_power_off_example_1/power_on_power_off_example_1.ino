@@ -1,10 +1,16 @@
 /*
-  An example that demonstrates the arduino_power power on/power off functions
-  in the context of a simple LED blink program
+  Blink
+  Turns on an LED on for one second, then off for one second, repeatedly.
 
-  This blinks the onboard yellow LED
+  Most Arduinos have an on-board LED you can control. On the Uno and
+  Leonardo, it is attached to digital pin 13. If you're unsure what
+  pin the on-board LED is connected to on your Arduino model, check
+  the documentation at http://arduino.cc
 
-  Based on the Blink example program by Scott Fitzgerald
+  This example code is in the public domain.
+
+  modified 8 May 2014
+  by Scott Fitzgerald
  */
 
 const int buttonPin = 2;
@@ -21,9 +27,9 @@ void setup() {
   pinMode(enablePin, OUTPUT);
   digitalWrite(enablePin, HIGH);   // Set pin 12 HIGH and leave it
 
-  pinMode(buttonPin, INPUT);
-
-  // need to delay for three seconds to allow the Arduino to 'boot'
+  pinMode(buttonPin, INPUT);  
+ 
+  // need to delay for three seconds to allow the Arduino to 'boot' 
   // before starting to monitor the pushbutton in shutdown mode
   delay(3000);
 }
@@ -32,15 +38,15 @@ void setup() {
 void loop() {
 
   buttonState = digitalRead(buttonPin);
-
+  
   if (buttonState == HIGH) {
     // shutdown the PowerBoost
     digitalWrite(enablePin, LOW);
   }
 
-
-  digitalWrite(ledPin, HIGH);   // turn the LED on
-  delay(500);
-  digitalWrite(ledPin, LOW);    // turn the LED off
-  delay(250);
+  digitalWrite(ledPin, HIGH);   // turn the LED on (HIGH is the voltage level)
+  delay(500);              // wait for a second
+  digitalWrite(ledPin, LOW);    // turn the LED off by making the voltage LOW
+  delay(250);              // wait for a second
 }
+
