@@ -1,5 +1,7 @@
 # Arduino Power
 
+** As of 2016/10/07 this is a work in progress - not quite ready for release **
+
 The [Arduino](https://www.arduino.cc) family of microcontroller boards are incredibly versatile devices for
 building sensors, robots, and many other uses.
 
@@ -98,7 +100,7 @@ void loop() {
 
 
 
-![power on / power off breadboard](images/arduino_breadboard_1.png)
+![power on / power off breadboard](https://github.com/craic/arduino_power/blob/master/images/arduino_power_breadboard_1.png)
 
 
 # Low Battery Shutdown
