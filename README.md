@@ -112,3 +112,6 @@ void loop() {
 
 ** to be added **
 
+![power on / power off breadboard photo](https://github.com/craic/arduino_power/blob/master/images/breadboard_2_photo.png)
+
+
