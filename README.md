@@ -7,7 +7,7 @@ need any special power management circuitry. You connect a power source, the dev
 does it's job and then stops when the power is disconnected. Unlike a Raspberry Pi system, there is
 no risk of corrupting an SD memory card.
 
-But for some applications you may want to monitor power status and respond to in a more managed way, instead of just shutting down.
+But for some applications you may want to monitor power status and respond in a more managed way, instead of just shutting down.
 
 
 Consider a remote sensing device that logs temperature data, for example. If the battery runs out
@@ -19,9 +19,7 @@ recharging.
 
 
 This project presents several approaches to Arduino power management with circuits, software and descriptions for
-each of them.
-
-Starting with a simple power on/power of switch all the way to a data logging system that includes battery status
+each of them. Starting with a simple power-on/power-off switch all the way to a data logging system that includes battery status
 which is intended for unattended environment monitoring.
 
 
@@ -44,9 +42,8 @@ edges, allowing you to place a rectangular LiPo battery, such as 2000mAh battery
 The 5V output from the boost circuit is available on the standard Arduino shield 5V pin, which allows you to stack this with an Arduino and
 other shields without any additional wires.
 
-By default the shield will deliver power but you can add the optional switch that they provide to trun power on and off as desired.
-
-In this project you do not want to add that switch ! We are going to add some simple external circuitry which extends the
+By default the shield will deliver power but you can add the optional switch that they provide to turn power on and off as desired. *In this
+project you do not want to add that switch !* We are going to add some simple external circuitry which extends the
 functionality of the board, at the expense of a few external wires.
 
 
@@ -69,9 +66,6 @@ how it works are included here.
 
 # Power On / Power Off
 
-![power on / power off breadboard](https://github.com/craic/arduino_power/blob/master/images/arduino_power_breadboard_1.png)
-
-
 
 This example program simply blinks the Arduino on board yellow LED which is attached to pin 13.
 
@@ -91,6 +85,5 @@ This example program simply blinks the Arduino on board yellow LED which is atta
 
 ** to be added **
 
-![power on / power off breadboard photo](https://github.com/craic/arduino_power/blob/master/images/breadboard_2_photo.png)
 
 
