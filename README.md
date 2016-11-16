@@ -37,8 +37,8 @@ The system uses a rechargeable LiPoly Battery and an Adafruit PowerBoost Charger
 
 Most of the work described here uses the Power Shield, but I'll talk about using the breakout boards later on.
 
-The [PowerBoost 500 Shield](https://www.adafruit.com/products/2078) looks like an empty shield but it has the PowerBoost machinery spread around its
-edges, allowing you to place a rectangular LiPo battery, such as 2000mAh battery, in the middle of the shield.
+The [PowerBoost 500 Shield](https://www.adafruit.com/products/2078) looks like an empty shield but it has the PowerBoost machinery
+located around its edges, allowing you to place a rectangular LiPo battery, such as 2000mAh battery, in the middle of the shield.
 The 5V output from the boost circuit is available on the standard Arduino shield 5V pin, which allows you to stack this with an Arduino and
 other shields without any additional wires.
 
@@ -46,6 +46,24 @@ By default the shield will deliver power but you can add the optional switch tha
 project you do not want to add that switch !* We are going to add some simple external circuitry which extends the
 functionality of the board, at the expense of a few external wires.
 
+For this project we need access to 2 'pins' on the PowerBoost - One has the Battery Voltage and the other is an Enable pin that lets us turn
+the unit on and off.
+
+These are easy to access on the breakout board versions, less so in the case of the shield.
+
+I'll explain how we use these below, but here let me explain how we access them on the shield.
+
+
+![PowerBoost Shield Enable Pin](/images/powerboost_shield_enable_pin.png)
+
+
+
+
+
+
+
+The PowerBoost has an Enable pin which is used to turn the unit on and off. This is easy to access in the breadboard versions of the
+PowerBoost but is not explicitly available on the shield
 
 
 
