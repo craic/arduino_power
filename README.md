@@ -27,7 +27,7 @@ which is intended for unattended environment monitoring.
 The project is built on the ideas in the [LiPoPi](https://github.com/NeonHorizon/lipopi) and [Pi Power](https://github.com/craic/pi_power)
 projects, which provides similar functionality for Raspberry Pi systems.
 
-# Overview
+## Overview
 
 - Power On / Power Off using a push button
 - Monitor battery voltage using the Arduino ADC
@@ -35,19 +35,16 @@ projects, which provides similar functionality for Raspberry Pi systems.
 - Record the battery voltage and a shutdown message to file
 - Display battery status using a red/green LED
 
-# Adafruit PowerBoost Shield
+## Adafruit PowerBoost Shield
 
 The system uses a rechargeable LiPoly Battery and an Adafruit PowerBoost Charger, which can both charge the battery and boost its output to 5V.
-[Adafruit](https://www.adafruit.com) makes three versions of the Power Boost - two breakout boards and an Arduino Shield:
-- [PowerBoost 500 Charger - Rechargeable 5V Lipo USB Boost @ 500mA+](https://www.adafruit.com/products/1944)
-- [PowerBoost 1000 Charger - Rechargeable 5V Lipo USB Boost @ 1A - 1000C](https://www.adafruit.com/products/2465)
-- [PowerBoost 500 Shield - Rechargeable 5V Power Shield](https://www.adafruit.com/products/2078)
+[Adafruit](https://www.adafruit.com) makes three versions of the Power Boost - two breakout boards and an Arduino Shield.
 
 Most of the work described here uses the Power Shield, but I'll talk about using the breakout boards later on.
 
-Please see [this page](PowerBoostShield.md) for information about the Power Shield.
+Please see [this page](PowerBoostShield.md) for information about the PowerBoost Shield.
 
-**In summary, to prepare the Shield kit you need to:**
+**In brief, to prepare the Shield kit you need to:**
 
 1. Solder on the stacking header strips
 2. Do NOT attach the switch
@@ -56,11 +53,12 @@ Please see [this page](PowerBoostShield.md) for information about the Power Shie
 
 
 
+##Power On / Power Off circuit
 
 
 
 
-# operation
+## operation
 
 The system has three components with hardware and software for each of them:
 
