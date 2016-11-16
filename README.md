@@ -27,6 +27,14 @@ which is intended for unattended environment monitoring.
 The project is built on the ideas in the [LiPoPi](https://github.com/NeonHorizon/lipopi) and [Pi Power](https://github.com/craic/pi_power)
 projects, which provides similar functionality for Raspberry Pi systems.
 
+# Overview
+
+- Power On / Power Off using a push button
+- Monitor battery voltage using the Arduino ADC
+- Shutdown the system on low voltage
+- Record the battery voltage and a shutdown message to file
+- Display battery status using a red/green LED
+
 # Adafruit PowerBoost Shield
 
 The system uses a rechargeable LiPoly Battery and an Adafruit PowerBoost Charger, which can both charge the battery and boost its output to 5V.
