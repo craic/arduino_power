@@ -85,9 +85,14 @@ pads. That way I can remove it more easily if I change my mind.
 
 In the example here I am going to use pin **A0**, which is the innermost of the six.
 
+&nbsp;
 
+In Summary, to prepare the Shield kit you need to:
 
-
+- Solder on the Arduino header strips
+- Do NOT attach the switch
+- Solder on a length of wire (4 inches, 22AWG solid core) to the Enable Pin
+- Bridge the pads for Analog pin A0 on the underside of the shield
 
 
 
