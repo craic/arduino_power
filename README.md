@@ -46,7 +46,7 @@ By default the shield will deliver power but you can add the optional switch tha
 project you do not want to add that switch !* We are going to add some simple external circuitry which extends the
 functionality of the board, at the expense of a few external wires.
 
-For this project we need access to 2 'pins' on the PowerBoost - One has the Battery Voltage and the other is an Enable pin that lets us turn
+For this project we need access to 2 'pins' on the PowerBoost - One has the **Battery Voltage** and the other is the **Enable** pin that lets us turn
 the unit on and off.
 
 These are easy to access on the breakout board versions, less so in the case of the shield.
@@ -54,7 +54,7 @@ These are easy to access on the breakout board versions, less so in the case of 
 I'll explain how we use these below, but here let me explain how we access them on the shield.
 
 
-The Enable pin on the Shield is unmarked but if you find the location for the optional switch on the left edge of the board,
+The **Enable** pin on the Shield is unmarked but if you find the location for the optional switch on the left edge of the board,
 marked as 'S1', then the pin is the lowest of the 3 *small* holes (not the larger holes).
 
 ![PowerBoost Shield Enable Pin](/images/powerboost_shield_enable_pin.png)
@@ -69,7 +69,7 @@ bridging the corresponding solder pads on the underside of the shield.
 ![PowerBoost Shield Voltage Pads](/images/powerboost_shield_voltage_pin.png)
 
 If you have never done that before, you want to put a blob of solder across the 'V' gap in the appropriate pad.
-This is revesible but it is a bit of a fiddle, so I sometimes solder a short loop of wire to bridge the
+This is reversible but it is a bit of a fiddle, so I sometimes solder a short loop of wire to bridge the
 pads. That way I can remove it more easily if I change my mind.
 
 In the example here I am going to use pin **A0**, which is the innermost of the six.
