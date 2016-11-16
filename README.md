@@ -42,9 +42,9 @@ The system uses a rechargeable LiPoly Battery and an Adafruit PowerBoost Charger
 
 Most of the work described here uses the Power Shield, but I'll talk about using the breakout boards later on.
 
-Please see [this page](PowerBoostShield.md) for information about the PowerBoost Shield.
+Please read [this page](PowerBoostShield.md) on configuring the PowerBoost Shield.
 
-**In brief, to prepare the Shield kit you need to:**
+**TLDR; to prepare the Shield kit you need to:**
 
 1. Solder on the stacking header strips
 2. Do NOT attach the switch
@@ -55,8 +55,12 @@ Please see [this page](PowerBoostShield.md) for information about the PowerBoost
 
 ##Power On / Power Off circuit
 
+This example program simply blinks the Arduino on board yellow LED which is attached to pin 13.
 
+```arduino
+// dummy text
 
+```
 
 ## operation
 
@@ -71,26 +75,6 @@ The software is intended to be incorporated in your Arduino programs. Simple exa
 how it works are included here.
 
 
-# Power On / Power Off
-
-
-This example program simply blinks the Arduino on board yellow LED which is attached to pin 13.
-
-
-
-
-```arduino
-// dummy text
-
-```
-
-
-
-
-
-# Low Battery Shutdown
-
-** to be added **
 
 
 
