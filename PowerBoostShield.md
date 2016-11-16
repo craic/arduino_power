@@ -29,7 +29,7 @@ for details - **do not install the switch**.
 
 
 The **Enable** pin on the Shield is unmarked but if you find the location for the optional switch on the left edge of the board,
-marked as 'S1', then the pin is the lowest of the 3 *small* holes (not the larger holes).
+marked as 'S1', then the pin is the lowest of the 3 *small* holes (not the larger holes). You will attach a wire to this pin.
 
 ![PowerBoost Shield Enable Pin](/images/powerboost_shield_enable_pin.png)
 
@@ -69,8 +69,8 @@ like the Arduino Uno but with a few nice tweaks, such as a micro USB connector.
 You can get the Metro unassembled, but with supplied *non-stacking* headers.
 
 What I have done on a couple of projects is to use the *non-stacking* headers on the PowerBoost shield and use
-its *stacking* headers on the Metro. That way you can attach the PowerBoost below the Metro, making it easier
-to wire up as you can see the pin labels on the Metro.
+its *stacking* headers on the Metro. That way you can attach the PowerBoost **below** the Metro,
+keeping it out of the way and making it easier to wire up the Metro.
 
 ![Metro PowerBoost Stack](/images/metro_powerboost_stack.png)
 
