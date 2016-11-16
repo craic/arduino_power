@@ -49,9 +49,12 @@ functionality of the board, at the expense of a few external wires.
 For this project we need access to 2 'pins' on the PowerBoost - One has the **Battery Voltage** and the other is the **Enable** pin that lets us turn
 the unit on and off.
 
-These are easy to access on the breakout board versions, less so in the case of the shield.
+These are easy to access on the breakout board versions, less so in the case of the shield. I'll
+explain how we use the boards below, but here I am going to focus solely on the **shield**.
 
-I'll explain how we use these below, but here let me explain how we access them on the shield.
+I will assume that you have already soldered
+on the Arduino headers onto the board. See the [Adafruit tutorial](https://learn.adafruit.com/adafruit-powerboost-500-shield-rechargeable-battery-pack)
+for details - **do not install the switch**.
 
 
 The **Enable** pin on the Shield is unmarked but if you find the location for the optional switch on the left edge of the board,
