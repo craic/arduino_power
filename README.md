@@ -57,7 +57,22 @@ I'll explain how we use these below, but here let me explain how we access them 
 The Enable pin on the Shield is unmarked but if you find the location for the optional switch on the left edge of the board,
 marked as 'S1', then the pin is the lowest of the 3 *small* holes (not the larger holes).
 
-![PowerBoost Shield Enable Pin](/images/powerboost_shield_enable_pin.png){: width="200px"}
+![PowerBoost Shield Enable Pin](/images/powerboost_shield_enable_pin.png)
+
+
+The shield provides a way to access the battery voltage via one of the 6 **Analog In** pins. These each have
+an Analog to Digital converter on the Arduino board and so they can be read by your software.
+
+You need to choose which of these pins you want to read battery voltage on and you set this by
+bridging the corresponding solder pads on the underside of the shield.
+
+![PowerBoost Shield Voltage Pads](/images/powerboost_shield_voltage_pin.png)
+
+If you have never done that before, you want to put a blob of solder across the 'V' gap in the appropriate pad.
+This is revesible but it is a bit of a fiddle, so I sometimes solder a short loop of wire to bridge the
+pads. That way I can remove it more easily if I change my mind.
+
+In the example here I am going to use pin **A0**, which is the innermost of the six.
 
 
 
@@ -65,8 +80,6 @@ marked as 'S1', then the pin is the lowest of the 3 *small* holes (not the large
 
 
 
-The PowerBoost has an Enable pin which is used to turn the unit on and off. This is easy to access in the breadboard versions of the
-PowerBoost but is not explicitly available on the shield
 
 
 
