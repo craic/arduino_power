@@ -1,36 +1,60 @@
 # Arduino Power
 
-** As of 2016/10/07 this is a work in progress - not quite ready for release **
+** As of 2016/11/15 this is a work in progress - not quite ready for release **
 
-The [Arduino](https://www.arduino.cc) family of microcontroller boards are incredibly versatile devices for
-building sensors, robots, and many other uses.
+Projects involving the [Arduino](https://www.arduino.cc) family of microcontroller boards typically don't
+need any special power management circuitry. You connect a power source, the device boots,
+does it's job and then stops when the power is disconnected. Unlike a Raspberry Pi system, there is
+no risk of corrupting an SD memory card.
 
-By powering these from rechargeable LiPoly batteries
-we can build small self-contained systems for remote monitoring, portable projects, etc.
+But for some applications you may want to monitor power status and respond to in a more managed way, instead of just shutting down.
 
-In most cases power management is trivial. When you connect power to the Arduino it
-boots up right away and the loaded software runs in a loop until the power is
-disconnected.
-
-Unlike a Raspberry Pi system, there is no concern about the system software being
-corrupted by a sudden removal of power.
-
-However, there are cases where you want more control over the power source and, in particular,
-you may want to log certain events related to that.
 
 Consider a remote sensing device that logs temperature data, for example. If the battery runs out
 while it is unattended the logs simply stop. There is no way to tell immediately that low
 battery was the problem. It could have been software or hardware failure.
 
-arduino_power is a way to manange and monitor power from a LiPoly battery that provides
-more control than a simple on/off switch.
-
-The project is built on the ideas in the [LiPoPi project](https://github.com/NeonHorizon/lipopi) that provides similar functionality for
-Raspberry Pi systems.
+Likewise, for a portable system, it would be helpful to know how much battery life remains and when it needs
+recharging.
 
 
-The system uses an Adafruit PowerBoost charger to boost the output voltage from a LiPoly battery to
-the 5V needed to power the Arduino via USB and to recharge the battery.
+This project presents several approaches to Arduino power management with circuits, software and descriptions for
+each of them.
+
+Starting with a simple power on/power of switch all the way to a data logging system that includes battery status
+which is intended for unattended environment monitoring.
+
+
+
+The project is built on the ideas in the [LiPoPi](https://github.com/NeonHorizon/lipopi) and [Pi Power](https://github.com/craic/pi_power)
+projects, which provides similar functionality for Raspberry Pi systems.
+
+# Adafruit PowerBoost Shield
+
+The system uses a rechargeable LiPoly Battery and an Adafruit PowerBoost Charger, which can both charge the battery and boost its output to 5V.
+[Adafruit](https://www.adafruit.com) makes three versions of the Power Boost - two breakout boards and an Arduino Shield:
+- [PowerBoost 500 Charger - Rechargeable 5V Lipo USB Boost @ 500mA+](https://www.adafruit.com/products/1944)
+- [PowerBoost 1000 Charger - Rechargeable 5V Lipo USB Boost @ 1A - 1000C](https://www.adafruit.com/products/2465)
+- [PowerBoost 500 Shield - Rechargeable 5V Power Shield](https://www.adafruit.com/products/2078)
+
+Most of the work described here uses the Power Shield, but I'll talk about using the breakout boards later on.
+
+The [PowerBoost 500 Shield](https://www.adafruit.com/products/2078) looks like an empty shield but it has the PowerBoost machinery spread around its
+edges, allowing you to place a rectangular LiPo battery, such as 2000mAh battery, in the middle of the shield.
+The 5V output from the boost circuit is available on the standard Arduino shield 5V pin, which allows you to stack this with an Arduino and
+other shields without any additional wires.
+
+By default the shield will deliver power but you can add the optional switch that they provide to trun power on and off as desired.
+
+In this project you do not want to add that switch ! We are going to add some simple external circuitry which extends the
+functionality of the board, at the expense of a few external wires.
+
+
+
+
+
+
+# operation
 
 The system has three components with hardware and software for each of them:
 
@@ -55,52 +79,7 @@ This example program simply blinks the Arduino on board yellow LED which is atta
 
 
 ```arduino
-/*
-  An example that demonstrates the arduino_power power on/power off functions
-  in the context of a simple LED blink program
-
-  This blinks the onboard yellow LED
-
-  Based on the Blink example program by Scott Fitzgerald
- */
-
-const int buttonPin = 2;
-const int enablePin = 12;
-const int ledPin    = 13;
-
-int buttonState = 0;
-int lowBatteryState = HIGH;
-
-// the setup function runs once when you press reset or power the board
-void setup() {
-  // initialize digital pin 13 as an output.
-  pinMode(ledPin, OUTPUT);
-  pinMode(enablePin, OUTPUT);
-  digitalWrite(enablePin, HIGH);   // Set pin 12 HIGH and leave it
-
-  pinMode(buttonPin, INPUT);
-
-  // need to delay for three seconds to allow the Arduino to 'boot'
-  // before starting to monitor the pushbutton in shutdown mode
-  delay(3000);
-}
-
-// the loop function runs over and over again forever
-void loop() {
-
-  buttonState = digitalRead(buttonPin);
-
-  if (buttonState == HIGH) {
-    // shutdown the PowerBoost
-    digitalWrite(enablePin, LOW);
-  }
-
-
-  digitalWrite(ledPin, HIGH);   // turn the LED on
-  delay(500);
-  digitalWrite(ledPin, LOW);    // turn the LED off
-  delay(250);
-}
+// dummy text
 
 ```
 
