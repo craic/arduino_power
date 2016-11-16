@@ -54,7 +54,10 @@ These are easy to access on the breakout board versions, less so in the case of 
 I'll explain how we use these below, but here let me explain how we access them on the shield.
 
 
-![PowerBoost Shield Enable Pin](/images/powerboost_shield_enable_pin.png)
+The Enable pin on the Shield is unmarked but if you find the location for the optional switch on the left edge of the board,
+marked as 'S1', then the pin is the lowest of the 3 *small* holes (not the larger holes).
+
+![PowerBoost Shield Enable Pin](/images/powerboost_shield_enable_pin.png){: width="200px"}
 
 
 
