@@ -42,7 +42,7 @@ The system uses a rechargeable LiPoly Battery and an Adafruit PowerBoost Charger
 
 Most of the work described here uses the Power Shield, but I'll talk about using the breakout boards later on.
 
-Please read [this page](PowerBoostShield.md) on configuring the PowerBoost Shield.
+**Please read [This Page](PowerBoostShield.md) on configuring the PowerBoost Shield.**
 
 **TLDR; to prepare the Shield kit you need to:**
 
