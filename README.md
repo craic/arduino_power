@@ -87,7 +87,7 @@ In the example here I am going to use pin **A0**, which is the innermost of the 
 
 &nbsp;
 
-In Summary, to prepare the Shield kit you need to:
+**In summary, to prepare the Shield kit you need to:**
 
 - Solder on the Arduino header strips
 - Do NOT attach the switch
