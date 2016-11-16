@@ -89,25 +89,25 @@ In the example here I am going to use pin **A0**, which is the innermost of the 
 
 **In summary, to prepare the Shield kit you need to:**
 
-1 Solder on the stacking header strips
-2 Do NOT attach the switch
-3 Solder on a length of wire (4 inches, 22AWG solid core) to the Enable Pin
-4 Bridge the pads for Analog pin A0 on the underside of the shield
+1. Solder on the stacking header strips
+2. Do NOT attach the switch
+3. Solder on a length of wire (4 inches, 22AWG solid core) to the Enable Pin
+4. Bridge the pads for Analog pin A0 on the underside of the shield
 
 
 &nbsp;
 
-Protip: Using the shield with the Adafruit METRO
+## Protip: Using the PowerBoost shield with the Adafruit Metro
 
 The standard Arduino Uno comes with headers already attached which means that you can only stack shields on top, not below.
-Adafruit make an Arduino clone called the [Adafruit METRO](https://www.adafruit.com/products/2466) which works just
+Adafruit make an Arduino clone called the [Adafruit Metro](https://www.adafruit.com/products/2466) which works just
 like the Arduino Uno but with a few nice tweaks, such as a micro USB connector.
 
-You can get the METRO unassembled, but with supplied *non-stacking* headers.
+You can get the Metro unassembled, but with supplied *non-stacking* headers.
 
 What I have done on a couple of projects is to use the *non-stacking* headers on the PowerBoost shield and use
-its *stacking* headers on the METRO. That way you can attach the PowerBoost below the METRO, making it easier
-to wire up as you can see the pin labels.
+its *stacking* headers on the Metro. That way you can attach the PowerBoost below the Metro, making it easier
+to wire up as you can see the pin labels on the Metro.
 
 ![Metro PowerBoost Stack](/images/metro_powerboost_stack.png)
 
