@@ -53,7 +53,7 @@ In the example here I am going to use pin **A0**, which is the innermost of the 
 **In summary, to prepare the Shield kit you need to:**
 
 1. Solder on the stacking header strips
-2. Do NOT attach the switch
+2. But do not attach the switch
 3. Solder on a length of wire (4 inches, 22AWG solid core) to the Enable Pin
 4. Bridge the pads for Analog pin A0 on the underside of the shield
 

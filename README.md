@@ -29,31 +29,64 @@ projects, which provides similar functionality for Raspberry Pi systems.
 
 ## Overview
 
+The system provides several functions:
+
 - Power On / Power Off using a push button
 - Monitor battery voltage using the Arduino ADC
 - Shutdown the system on low voltage
 - Record the battery voltage and a shutdown message to file
 - Display battery status using a red/green LED
 
+I will introduce each of these in turn, but the common thread to all of them is combination of the Adafruit PowerBoost and the Arduino.
+
+
 ## Adafruit PowerBoost Shield
 
-The system uses a rechargeable LiPoly Battery and an Adafruit PowerBoost Charger, which can both charge the battery and boost its output to 5V.
-[Adafruit](https://www.adafruit.com) makes three versions of the Power Boost - two breakout boards and an Arduino Shield.
+The system uses a rechargeable LiPoly Battery and an [Adafruit PowerBoost Charger Shield](https://www.adafruit.com/products/2078),
+which can both charge the battery and boost its output to 5V.
 
+[Adafruit](https://www.adafruit.com) makes three versions of the Power Boost - two breakout boards and an Arduino Shield.
 Most of the work described here uses the Power Shield, but I'll talk about using the breakout boards later on.
 
-**Please read [This Page](PowerBoostShield.md) on configuring the PowerBoost Shield.**
+**Please read [This Page](PowerBoostShield.md) on how to configure the PowerBoost Shield.**
 
 **TLDR; to prepare the Shield kit you need to:**
 
 1. Solder on the stacking header strips
-2. Do NOT attach the switch
+2. But do not attach the switch
 3. Solder on a length of wire (4 inches, 22AWG solid core) to the Enable Pin
 4. Bridge the pads for Analog pin A0 on the underside of the shield
 
 
 
 ##Power On / Power Off circuit
+
+This basic circuit uses the press of a momentary pushbutton switch to power up the system and, when running, to power it down.
+
+When you press and hold on a powered down system, the PowerBoost is turned on and supplies power to the Arduino which then boots up
+and runs the program that you have loaded onto it.
+
+When you press the button again, and release it, the Arduino disables the PowerBoost and, because it is no longer supplying power,
+the Arduino shuts down.
+
+With the more complex versions of this, the system log a shutdown message, etc., before actually shutting down.
+
+The PowerBoost has an **Enable pin** which is held High by default. In this state, the PowerBoost is enabled and supplies power
+via the 5V pin on the Arduino headers.
+
+If that pin is connected to ground then the PowerBoost is disabled and does not provide power.
+
+
+
+
+
+
+
+
+
+
+
+
 
 This example program simply blinks the Arduino on board yellow LED which is attached to pin 13.
 
