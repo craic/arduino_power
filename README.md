@@ -99,6 +99,7 @@ This should set the **Enable pin** to LOW and turn off the PowerBoost. However, 
 **Enable pin** remains HIGH given the voltage from the battery. It is only when the pushbutton is **release** that voltage is removed
 and the **Enable pin** is pulled LOW, turning off the PowerBoost and Arduino.
 
+![Power On / Power Off Circuit](/images/power_on_power_off_schematic.png)
 
 
 
