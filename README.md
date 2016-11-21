@@ -157,36 +157,11 @@ void arduinoPowerMonitor() {
 }
 ```
 
+**Note** you can use different Arduino pins but you might want to avoid pins 10-13 as these are used in the
+Serial Peripheral Interface (SPI).
 
 
 
-
-
-
-
-
-
-
-
-
-This example program simply blinks the Arduino on board yellow LED which is attached to pin 13.
-
-```arduino
-// dummy text
-
-```
-
-## operation
-
-The system has three components with hardware and software for each of them:
-
-- Power on by pressing a pushbutton for a few seconds
-- Power off by pressing and releasing the same pushbutton
-- Automatic shutdown, with a log message, on a low battery signal
-
-
-The software is intended to be incorporated in your Arduino programs. Simple examples that demonstrate
-how it works are included here.
 
 
 
