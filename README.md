@@ -117,6 +117,19 @@ Here are the current paths in the four states:
 
 ![Power On / Power Off Cycle](/images/power_on_power_off_cycle.png)
 
+####The Circuit
+
+To actually wire up this circuit, using the PowerBoost Shield, involves another as the board does not provide
+a direct connection to the Battery positive lead. You can access this via one of the **analog pins** as described on
+the [PowerBoost](PowerBoostShield.md) page, **BUT** that pin has 200K resistor in series to limit current. In its powered down state
+there is only around 1.5 V on this pin, which is not enough to pull the **Enable pin** HIGH.
+
+The work around is to not plug the LiPo battery directly into the PowerBoost Shield. Instead use a
+[Switched JST-PH 2-Pin SMT Right Angle Breakout Board](https://www.adafruit.com/products/1863) ($2.50) and a
+[JST 2-pin cable](https://www.adafruit.com/products/261) ($0.75) and take off the Battery voltage from the positive lead
+on a breadboard.
+
+![Power On / Power Off Breadboard](images/power_on_power_off_breadboard.png)
 
 ####Example code
 
