@@ -120,8 +120,42 @@ Here are the current paths in the four states:
 
 ####Example code
 
+[arduino_1_power_on_power_off](/arduino_1_power_on_power_off) is the example application for these functions. Aside from power control, all it does is
+blink the onboard LED attached to **pin 13**.
+
+There are two global variables and two functions, **arduinoPowerSetup() and arduinoPowerMonitor()** that you can
+add to your code.
 
 
+```arduino
+// Global variables for Arduino Power
+const int arduinoPowerEnablePin   =  9;
+const int arduinoPowerButtonPin   =  8;
+
+void arduinoPowerSetup() {
+  // When the Arduino boots, set the Enable Pin high and leave it
+  // This keeps the Powerboost Enable pin High and therefore running
+  pinMode(arduinoPowerEnablePin, OUTPUT);
+  digitalWrite(arduinoPowerEnablePin, HIGH);
+
+  // Set up the Button Pin to act as an input
+  pinMode(arduinoPowerButtonPin, INPUT);
+
+  // need to delay for three seconds to allow the Arduino to 'boot'
+  // before starting to monitor the pushbutton in shutdown mode
+  delay(3000);
+}
+
+void arduinoPowerMonitor() {
+  // shutdown the PowerBoost when the button is pressed while Arduino
+  // is running - this only works when the button is released...
+  // This is because the power-up circuit is activated when the button is down
+
+  if (digitalRead(arduinoPowerButtonPin) == HIGH) {
+    digitalWrite(arduinoPowerEnablePin, LOW);
+  }
+}
+```
 
 
 
