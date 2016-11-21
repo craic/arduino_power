@@ -119,25 +119,30 @@ Here are the current paths in the four states:
 
 ####The Circuit
 
-To actually wire up this circuit, using the PowerBoost Shield, involves another as the board does not provide
+To wire up this circuit, using the PowerBoost Shield, we need another hack as the board does not provide
 a direct connection to the Battery positive lead. You can access this via one of the **analog pins** as described on
 the [PowerBoost](PowerBoostShield.md) page, **BUT** that pin has 200K resistor in series to limit current. In its powered down state
 there is only around 1.5 V on this pin, which is not enough to pull the **Enable pin** HIGH.
 
-The work around is to not plug the LiPo battery directly into the PowerBoost Shield. Instead use a
+The workaround is to not plug the LiPo battery directly into the PowerBoost Shield. Instead use a
 [Switched JST-PH 2-Pin SMT Right Angle Breakout Board](https://www.adafruit.com/products/1863) ($2.50) and a
 [JST 2-pin cable](https://www.adafruit.com/products/261) ($0.75) and take off the Battery voltage from the positive lead
 on a breadboard.
 
+**Note** This layout leaves out the actual Arduino as that is part of your stack with the PowerBoost
+
 ![Power On / Power Off Breadboard](images/power_on_power_off_breadboard.png)
+
+**Note** the switched JST breakout board is useful as you can switch off the battery when you are uploading your code via USB, which
+itself provides power to the Arduino. Not necessary, but I prefer to isolate the two power sources.
 
 ####Example code
 
 [arduino_1_power_on_power_off](/arduino_1_power_on_power_off) is the example application for these functions. Aside from power control, all it does is
-blink the onboard LED attached to **pin 13**.
+blink the **onboard** LED attached to **pin 13**.
 
 There are two global variables and two functions, **arduinoPowerSetup() and arduinoPowerMonitor()** that you can
-add to your code.
+add to your code. Here is the arduinoPower-*specific* code:
 
 
 ```arduino
