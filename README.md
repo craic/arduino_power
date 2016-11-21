@@ -69,12 +69,35 @@ and runs the program that you have loaded onto it.
 When you press the button again, and release it, the Arduino disables the PowerBoost and, because it is no longer supplying power,
 the Arduino shuts down.
 
-With the more complex versions of this, the system log a shutdown message, etc., before actually shutting down.
+With the more complex versions of this, the system logs a shutdown message, etc., before actually shutting down.
 
-The PowerBoost has an **Enable pin** which is held High by default. In this state, the PowerBoost is enabled and supplies power
-via the 5V pin on the Arduino headers.
+###How this works
+
+The PowerBoost has an **Enable pin** which is held HIGH by default. In this state, the PowerBoost is enabled and supplies power
+via the 5V pin on the Arduino headers. The Blue LED on the shield is lit when it is supplying power.
 
 If that pin is connected to ground then the PowerBoost is disabled and does not provide power.
+
+####Power Up
+
+When the pushbutton is pressed, the battery voltage is connected to the Enable pin and pulls it HIGH, which turns on the
+PowerBoost output and which, in turn, boots the Arduino.
+
+The **ArduinoPowerSetup** function, included in your program, sets Arduino **digitial pin 9** to **output** and HIGH.
+This ensures that the **Enable pin* remains high when the pushbutton is released, ensuring that the PowerBoost remains on.
+
+####Power Down
+The **ArduinoPowerSetup** function has configured Arduino **digital pin 8** as an input and the 100K resistor pulls this LOW.
+
+On a running system, pressing the pushbutton again, pulls **pin 8** HIGH. The **ArduinoPowerMonitor** function
+in your program monitors this and sets **pin 9** to LOW.
+
+This should set the **Enable pin** to LOW and turn off the PowerBoost. However, because the pushbutton is **down**, the
+**Enable pin** remains HIGH given the voltage from the battery. It is only when the pushbutton is **release** that voltage is removed
+and the **Enable pin** is pulled LOW, turning off the PowerBoost and Arduino.
+
+
+
 
 
 
