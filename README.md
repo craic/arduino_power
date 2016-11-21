@@ -78,13 +78,16 @@ via the 5V pin on the Arduino headers. The Blue LED on the shield is lit when it
 
 If that pin is connected to ground then the PowerBoost is disabled and does not provide power.
 
+You add two functions, **ArduinoPowerSetup** and **ArduinoPowerMonitor**, to your code which configure **digital pins 8 and 9**
+as input and output, respectively.
+
 ####Power Up
 
-When the pushbutton is pressed, the battery voltage is connected to the Enable pin and pulls it HIGH, which turns on the
+When the pushbutton is pressed, the battery voltage is connected to the **Enable pin** and pulls it HIGH, which turns on the
 PowerBoost output and which, in turn, boots the Arduino.
 
 The **ArduinoPowerSetup** function, included in your program, sets Arduino **digitial pin 9** to **output** and HIGH.
-This ensures that the **Enable pin* remains high when the pushbutton is released, ensuring that the PowerBoost remains on.
+This ensures that the **Enable pin** remains high when the pushbutton is released, ensuring that the PowerBoost remains on.
 
 ####Power Down
 The **ArduinoPowerSetup** function has configured Arduino **digital pin 8** as an input and the 100K resistor pulls this LOW.
