@@ -76,12 +76,14 @@ With the more complex versions of this, the system logs a shutdown message, etc.
 The PowerBoost has an **Enable pin** which is held HIGH by default. In this state, the PowerBoost is enabled and supplies power
 via the 5V pin on the Arduino headers. The Blue LED on the shield is lit when it is supplying power.
 
-If that pin is connected to ground then the PowerBoost is disabled and does not provide power.
+If that pin is connected to ground, through **R1** in the schematic below, then the PowerBoost is disabled and does not provide power.
 
 You add two functions, **ArduinoPowerSetup** and **ArduinoPowerMonitor**, to your code which configure **digital pins 8 and 9**
 as input and output, respectively.
 
-####Power Up
+![Power On / Power Off Circuit](/images/power_on_power_off_schematic.png)
+
+####Power On
 
 When the pushbutton is pressed, the battery voltage is connected to the **Enable pin** and pulls it HIGH, which turns on the
 PowerBoost output and which, in turn, boots the Arduino.
@@ -89,8 +91,8 @@ PowerBoost output and which, in turn, boots the Arduino.
 The **ArduinoPowerSetup** function, included in your program, sets Arduino **digitial pin 9** to **output** and HIGH.
 This ensures that the **Enable pin** remains high when the pushbutton is released, ensuring that the PowerBoost remains on.
 
-####Power Down
-The **ArduinoPowerSetup** function has configured Arduino **digital pin 8** as an input and the 100K resistor pulls this LOW.
+####Power Off
+The **ArduinoPowerSetup** function has configured Arduino **digital pin 8** as an input and resistor **R3** pulls this LOW.
 
 On a running system, pressing the pushbutton again, pulls **pin 8** HIGH. The **ArduinoPowerMonitor** function
 in your program monitors this and sets **pin 9** to LOW.
@@ -99,7 +101,17 @@ This should set the **Enable pin** to LOW and turn off the PowerBoost. However, 
 **Enable pin** remains HIGH given the voltage from the battery. It is only when the pushbutton is **release** that voltage is removed
 and the **Enable pin** is pulled LOW, turning off the PowerBoost and Arduino.
 
-![Power On / Power Off Circuit](/images/power_on_power_off_schematic.png)
+####The hack...
+
+The role of the two 1N4001 diodes is to direct the current flow from the battery when the pushbutton is pressed.
+
+In essence, there are two separate circuits connected to the pushbutton - the **power on** path and the **power off** path.
+
+When you **power on** the device, you also set up the **power off** function - and if you keep the pushbutton pressed for
+too long then the Arduino will power off the PowerBoost immediately.
+
+To handle this, the **ArduinoPowerSetup** function calls a **3 second delay()** before entering the main program loop.
+
 
 
 
