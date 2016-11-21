@@ -121,7 +121,7 @@ Here are the current paths in the four states:
 
 To wire up this circuit, using the PowerBoost Shield, we need another hack as the board does not provide
 a direct connection to the Battery positive lead. You can access this via one of the **analog pins** as described on
-the [PowerBoost](PowerBoostShield.md) page, **BUT** that pin has 200K resistor in series to limit current. In its powered down state
+the [PowerBoost](PowerBoostShield.md) page, **BUT** that pin has 2K resistor in series to limit current. In its powered down state
 there is only around 1.5 V on this pin, which is not enough to pull the **Enable pin** HIGH.
 
 The workaround is to not plug the LiPo battery directly into the PowerBoost Shield. Instead use a
