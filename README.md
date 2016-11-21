@@ -107,8 +107,8 @@ The role of the two 1N4001 diodes is to direct the current flow from the battery
 
 In essence, there are two separate circuits connected to the pushbutton - the **power on** path and the **power off** path.
 
-When you **power on** the device, you also set up the **power off** function - and if you keep the pushbutton pressed for
-too long then the Arduino will power off the PowerBoost immediately.
+When you **power on** the device, you also set up the **power off** function - and *if you keep the pushbutton pressed for
+too long then the Arduino will power off the PowerBoost immediately.*
 
 To handle this, the **ArduinoPowerSetup** function calls a **3 second delay()** before entering the main program loop.
 
