@@ -50,7 +50,7 @@ Most of the work described here uses the Power Shield, but I'll talk about using
 
 **Please read [This Page](PowerBoostShield.md) on how to configure the PowerBoost Shield.**
 
-**TLDR; to prepare the Shield kit you need to:**
+**TL;DR to prepare the Shield kit you need to:**
 
 1. Solder on the stacking header strips
 2. But do not attach the switch
@@ -73,17 +73,7 @@ With the more complex versions of this, the system logs a shutdown message, etc.
 
 **Please read [This Page](PowerOnPowerOff.md) for the details.**
 
-**TLDR Here is the schematic**
-
-###How this works
-
-The PowerBoost has an **Enable pin** which is held HIGH by default. In this state, the PowerBoost is enabled and supplies power
-via the 5V pin on the Arduino headers. The Blue LED on the shield is lit when it is supplying power.
-
-If that pin is connected to ground, through **R1** in the schematic below, then the PowerBoost is disabled and does not provide power.
-
-You add two functions, **ArduinoPowerSetup** and **ArduinoPowerMonitor**, to your code which configure **digital pins 8 and 9**
-as input and output, respectively.
+**TL;DR  &nbsp; Here is the schematic :**
 
 ![Power On / Power Off Circuit](/images/power_on_power_off_schematic.png)
 
