@@ -10,6 +10,10 @@ the Arduino shuts down.
 
 With the more complex versions of this, the system logs a shutdown message, etc., before actually shutting down.
 
+**NOTE** There are two variants of the software used with this circuit. The first checks for a button press
+every cycle of the *loop()* function, whereas the second uses an **Interrupt** in cases where the loop cycle time
+is more than about a second. I'll describe the basic version first and then discuss the changes needed for the interrupt version.
+
 ###How this works
 
 The PowerBoost has an **Enable pin** which is held HIGH by default. In this state, the PowerBoost is enabled and supplies power
@@ -119,6 +123,31 @@ void arduinoPowerMonitor() {
 
 **Note** you can use different Arduino pins but you might want to avoid pins 10-13 as these are used in the
 Serial Peripheral Interface (SPI).
+
+
+## Power Off using an Interrupt
+
+The software component of the Power Off circuit I just described works fine if the cycle time of the *loop()*
+function is short - say, around 1 second. But you might want a much longer cycle time if, for example, you
+want to measure a sensor value every 30 minutes by adding a long *delay()* to the loop. It would be nearly
+impossible to see the pushbutton press.
+
+In this situation we need to **interrupt** the program flow when the button is pressed.
+
+There are several ways to use **Interrupts** on the Arduino. I'm using a simple **External Interrupt* here.
+
+**NOTE** As well as changing the code, you need to switch the Power Off wire from **Pin 8** to **Pin 2**.
+
+
+
+
+
+
+*to be added*
+
+##Circuit using a PowerBoost Breakout Board
+
+*to be added*
 
 &nbsp;
 ##[Back to the README](README.md)

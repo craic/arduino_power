@@ -39,6 +39,8 @@ The system provides several functions:
 
 I will introduce each of these in turn, but the common thread to all of them is combination of the Adafruit PowerBoost and the Arduino.
 
+With each of these you add and customize two functions, *arduinoPowerSetup() and arduinoPowerMonitor()*, to the standard *setup() and loop()*
+functions in your code.
 
 ## Adafruit PowerBoost Shield
 
@@ -68,8 +70,6 @@ and runs the program that you have loaded onto it.
 
 When you press the button again, and release it, the Arduino disables the PowerBoost and, because it is no longer supplying power,
 the Arduino shuts down.
-
-With the more complex versions of this, the system logs a shutdown message, etc., before actually shutting down.
 
 **Please read [This Page](PowerOnPowerOff.md) for the details.**
 

@@ -42,7 +42,6 @@ void arduinoPowerMonitor() {
     digitalWrite(arduinoPowerEnablePin, LOW);
   }
 
-
 }
 
 
