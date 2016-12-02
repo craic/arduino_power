@@ -82,6 +82,56 @@ the Arduino shuts down.
 
 ##Monitor Battery Voltage
 
+The Arduino has 6 **Analog to Digital Converters** (ADCs) on analog pins 0-5, which makes voltage measurement
+straightforward. The PowerBoost shield allows you to connect the Battery voltage (**Vbat**) to one of these by
+bridging the appropriate solder pads as described on the [PowerBoost Shield page](PowerBoostShield.md). In this
+example I have linked it to **Analog pin 0**.
+
+The voltage of LiPoly batteries varies from around **4.25V** when fully charged to around **3.7V** when discharged.
+
+The ADC converts the voltage range of **0V to 5V** into the integer range of **0 to 1023**, and we access this value
+by calling **analogRead()**.
+
+This code snippet shows how to do this as well as calculating the relative battery state using the min and max
+battery voltages.
+
+```arduino
+  float maxVoltage = 4.25;
+  float minVoltage = 3.75;
+
+  arduinoPowerVoltage = float(analogRead(arduinoPowerVoltagePin)) / 1024.0 * 5.0;
+
+  float fractionalVoltage = (arduinoPowerVoltage - minVoltage) / (maxVoltage - minVoltage);
+```
+
+LiPoly batteries do not lose voltage linearly as they discharge, but it's *close enough* that we can
+estimate the remaining battery life using the fractional voltage.
+
+So we can get the battery voltage and estimate the life remaining, but we need a way to communicate
+that to the user. We could use an alphanumeric display and in the next section I will show how to
+log this to a file on a SD card. But those can be overkill for many projects.
+
+A simpler approach is to use an RGB and change the color to reflect battery life. For example:
+- Green - fully charged
+- Yellow - less than 50% remaining
+- Red - less than 10% remaining - time to recharge
+
+To implement that you just add an RGB Led and two 1K resistors to the circuit and
+add a bit of code to **arduinoPowerMonitor()**.
+
+RGB Leds typically use a **Common Anode** so this circuit works with that:
+
+
+![RGB Led schematic](images/RGB_led_schematic.png)
+
+
+
+
+
+
+
+
+
 
 
 
