@@ -112,9 +112,9 @@ that to the user. We could use an alphanumeric display and in the next section I
 log this to a file on a SD card. But those can be overkill for many projects.
 
 A simpler approach is to use an RGB and change the color to reflect battery life. For example:
-- Green - fully charged
-- Yellow - less than 50% remaining
-- Red - less than 10% remaining - time to recharge
+- Green - more than 50%
+- Yellow - 20% to 50%
+- Red - less than 20% - time to recharge
 
 To implement that you just add an RGB Led and two 1K resistors to the circuit and
 add a bit of code to **arduinoPowerMonitor()**.
@@ -124,9 +124,19 @@ RGB Leds typically use a **Common Anode** so this circuit works with that:
 
 ![RGB Led schematic](images/RGB_led_schematic.png)
 
+**NOTE** As I will show later on, there can be a significant 'oscillation' in the measured voltage, for reasons that I don't understand.
+If the battery is close to one of the values where the Led color changes, you may see it switch back and forth
+between the two states - very annoying. A quick fix is to place an **0.1uF capacitor** between **analog pin A0** and **Ground**.
+
+![RGB Led breadboard](images/p_on_p_off_led_breadboard.png)
+
+This image does not show the battery or the Arduino.
 
 
 
+The sketch [arduino_2_voltage_led](arduino_2_voltage_led) implements Power On/Power Off and Led voltage display.
+
+The code sets the green or red pin to **low** to turn the led on and **high** to turn it off.
 
 
 
