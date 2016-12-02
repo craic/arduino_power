@@ -73,6 +73,10 @@ The workaround is to not plug the LiPo battery directly into the PowerBoost Shie
 [JST 2-pin cable](https://www.adafruit.com/products/261) ($0.75) and take off the Battery voltage from the positive lead
 on a breadboard.
 
+**Note** Initially, on my breadboard, the power off circuit would trigger randomly. Adding a **0.1 uF ceramic capacitor**
+across the pushbutton solved this issue. Breadboards typically have long connecting wires, compared to a finished circuit, and
+there may have been some intereference that cause the triggers. I have had this problem with other breadboards.
+
 **Note** This layout leaves out the actual Arduino as that is part of your stack with the PowerBoost and you would mount the battery
 in the space on the PowerShield, with a bit of double-sided tape. I've kept it separate here for clarity.
 
