@@ -89,8 +89,8 @@ itself provides power to the Arduino. Not necessary, but I prefer to isolate the
 
 ####Example code
 
-[arduino_1_power_on_power_off](/arduino_1_power_on_power_off) is the example application for these functions. Aside from power control, all it does is
-blink the **onboard** LED attached to **pin 13**.
+[arduino_1_power_on_power_off_interrupt](/arduino_1_power_on_power_off_interrupt) is the example application for these functions.
+Aside from power control, all it does is blink the **onboard** LED attached to **pin 13**.
 
 There are two global variables and two functions, **arduinoPowerSetup() and arduinoPowerMonitor()** that you can
 add to your code. Here is the arduinoPower-*specific* code:
@@ -98,57 +98,48 @@ add to your code. Here is the arduinoPower-*specific* code:
 
 ```arduino
 // Global variables for Arduino Power
-const int arduinoPowerEnablePin   =  9;
-const int arduinoPowerButtonPin   =  8;
+const int arduinoPowerEnablePin = 8;
+const int arduinoPowerButtonPin = 2;
+
+// Note the volatile type - used to read the button state (not used here)
+volatile int arduinoPowerButtonState = 0;
 
 void arduinoPowerSetup() {
-  // When the Arduino boots, set the Enable Pin high and leave it
-  // This keeps the Powerboost Enable pin High and therefore running
+
+  // Setup the pins
+  pinMode(arduinoPowerButtonPin, INPUT);
   pinMode(arduinoPowerEnablePin, OUTPUT);
+
+  // On Arduino boot, set the Enable Pin high - this keeps the PowerBoost On
   digitalWrite(arduinoPowerEnablePin, HIGH);
 
-  // Set up the Button Pin to act as an input
-  pinMode(arduinoPowerButtonPin, INPUT);
-
-  // need to delay for three seconds to allow the Arduino to 'boot'
-  // before starting to monitor the pushbutton in shutdown mode
+  // need to delay for three seconds to allow the Arduino to boot
+  // before attaching the interrupt
   delay(3000);
+
+  // Attach an interrupt to the ISR vector
+  // pin 2 is linked to Interrupt 0 (INT0)
+  attachInterrupt(0, arduinoPowerInterrupt, RISING);
+}
+
+void arduinoPowerInterrupt() {
+  // shutdown the PowerBoost when the button is pressed while Arduino
+  // is running - this only works when the button is released...
+  // This is because the power ON circuit is also activated when the button is down
+    digitalWrite(arduinoPowerEnablePin, LOW);
 }
 
 void arduinoPowerMonitor() {
-  // shutdown the PowerBoost when the button is pressed while Arduino
-  // is running - this only works when the button is released...
-  // This is because the power-up circuit is activated when the button is down
-
-  if (digitalRead(arduinoPowerButtonPin) == HIGH) {
-    digitalWrite(arduinoPowerEnablePin, LOW);
-  }
+  // in this example this function does nothing !
+  // in other examples this would log the battery voltage, etc.
 }
+
 ```
 
-**Note** you can use different Arduino pins but you might want to avoid pins 10-13 as these are used in the
-Serial Peripheral Interface (SPI).
+**Note** you can use different Arduino pins for the Power On circuit but you might want
+to avoid pins 10-13 as these are used in the Serial Peripheral Interface (SPI). The Power Off
+circuit uses an external interrupt and that only works, in this basic version, with pins 2 and 3.
 
-
-## Power Off using an Interrupt
-
-The software component of the Power Off circuit I just described works fine if the cycle time of the *loop()*
-function is short - say, around 1 second. But you might want a much longer cycle time if, for example, you
-want to measure a sensor value every 30 minutes by adding a long *delay()* to the loop. It would be nearly
-impossible to see the pushbutton press.
-
-In this situation we need to **interrupt** the program flow when the button is pressed.
-
-There are several ways to use **Interrupts** on the Arduino. I'm using a simple **External Interrupt* here.
-
-**NOTE** As well as changing the code, you need to switch the Power Off wire from **Pin 8** to **Pin 2**.
-
-
-
-
-
-
-*to be added*
 
 ##Circuit using a PowerBoost Breakout Board
 
