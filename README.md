@@ -1,7 +1,5 @@
 # Arduino Power
 
-** As of 2016/11/15 this is a work in progress - not quite ready for release **
-
 Projects involving the [Arduino](https://www.arduino.cc) family of microcontroller boards typically don't
 need any special power management circuitry. You connect a power source, the device boots,
 does it's job and then stops when the power is disconnected. Unlike a Raspberry Pi system, there is
@@ -81,7 +79,9 @@ the Arduino shuts down.
 ![Power On / Power Off Circuit](/images/power_on_power_off_schematic.png)
 
 
-
+**Note** that you do not need this circuit to use the rest of this project. You can use the optional switch
+provided with the PowerBoost shield. The primary difference is that the basic switch just shuts the system
+down with no way to record a log message.
 
 ##Monitor Battery Voltage
 
@@ -126,6 +126,9 @@ RGB Leds typically use a **Common Anode** so this circuit works with that:
 
 
 ![RGB Led schematic](images/RGB_led_schematic.png)
+
+**NOTE** In practice, I use the 3.3V supply with my LEDs...
+
 
 **NOTE** As I will show later on, there can be a significant 'oscillation' in the measured voltage, for reasons that I don't understand.
 If the battery is close to one of the values where the Led color changes, you may see it switch back and forth
@@ -207,6 +210,15 @@ humidity is the [DHT22 sensor](https://www.adafruit.com/products/385) - check ou
 
 In my example code I use **digital pin 5** instead of pin 2, as I am already using that for the Power Off button interrupt.
 
+The code for this is in [arduino_4_voltage_temp_humidity_logging](arduino_4_voltage_temp_humidity_logging)
+
+Once I had this working on a breadboard, I wired this up on an [Adafruit Proto Shield](https://www.adafruit.com/products/2077).
+The DHT22 sensor is pretty bulky - but it is cheap. Take a look at other breakout boards from Adafruit, Sparkfun, etc for
+other alternatives.
+
+Here is a photo of the complete Arduino stack:
+
+* to be added *
 
 
 ##Ideas...
