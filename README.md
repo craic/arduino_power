@@ -22,6 +22,8 @@ This project presents several approaches to Arduino power management with circui
 each of them. Starting with a simple power-on/power-off switch all the way to a data logging system that includes battery status
 which is intended for unattended environment monitoring.
 
+You can pick and choose which of the subsystems you are interested in. I'll describe all of them in increasing complexity
+but you can comment out those parts you are not interested in.
 
 
 The project is built on the ideas in the [LiPoPi](https://github.com/NeonHorizon/lipopi) and [Pi Power](https://github.com/craic/pi_power)
@@ -63,7 +65,8 @@ Most of the work described here uses the Power Shield, but I'll talk about using
 
 ##Power On / Power Off Circuit
 
-This basic circuit uses the press of a momentary pushbutton switch to power up the system and, when running, to power it down.
+This basic circuit uses the press of a momentary pushbutton switch to power up the system and, when running, to power it down -
+similar to the way my phone works.
 
 When you press and hold on a powered down system, the PowerBoost is turned on and supplies power to the Arduino which then boots up
 and runs the program that you have loaded onto it.
@@ -130,13 +133,97 @@ between the two states - very annoying. A quick fix is to place an **0.1uF capac
 
 ![RGB Led breadboard](images/p_on_p_off_led_breadboard.png)
 
-This image does not show the battery or the Arduino.
+This breadboard layout does not show the battery or the Arduino.
 
 
 
 The sketch [arduino_2_voltage_led](arduino_2_voltage_led) implements Power On/Power Off and Led voltage display.
 
 The code sets the green or red pin to **low** to turn the led on and **high** to turn it off.
+
+**NOTE** You can check the measured voltages and/or debug by uncommenting the calls to **Serial** in the code and running
+the **Serial Monitor** in the IDE. You will see actual and fractional battery voltage. For some reason the
+first call is incorrect.
+
+
+
+
+##Logging Battery Voltage to a SD Card
+
+The LED indicator of voltage is useful for portable, battery powered Arduino systems where you don't care too much about
+the details, you just want to know when you need to recharge the battery.
+
+But if you are monitoring sensors in a standalone system, say, then you might want to record the battery voltage
+along with sensor data to give you a better idea of power consumption over time.
+
+For this part of the project I'm using the Adafruit [Data Logging Shield](https://www.adafruit.com/product/1141) which
+can record data in a **CSV** format file on the attached SD card, along with timestamps.
+The [Adafruit Guide](https://learn.adafruit.com/adafruit-data-logger-shield) explains how the **SD** and **RTC** libraries work
+and you should understand that before working on this part of the project.
+
+The circuit is unchanged from the previous example - it's worth keeping the LED as it provides immediate feedback on
+the battery status, but this is not necessary.
+
+Because we are logging data to the card, it is important that we log a shutdown message. That way we can
+tell if the shutdown was intentional or whether some error happened to the system.
+
+In addition, becauase we are monitoring the voltage, we can check when the voltage drops below some minimum level
+and safely shutdown the system. Again, we can log a message about that just before the shutdown.
+
+The sketch for this is in [arduino_3_voltage_logging](arduino_3_voltage_logging).
+
+This includes a few utility routines to generate a properly formatted timestamp string, etc. and includes
+a hack to flash the red led if you forget to insert a SD card, which I do all the time...
+
+
+The whole stack of Arduino Uno, Data Logging Shield, PowerBoost Shield and breadboard looks like this:
+
+![data_logging_stack](images/data_logging_stack.png)
+
+
+##Voltage Data##
+
+Here is a plot of the Battery voltage over time, showing the gradual decline over a period of around 20 hours.
+The decline is not truly linear but, for the purpose of estimating the remaining power, it is close enough
+
+![voltage_vs_time](images/voltage_vs_time.png)
+
+As I mentioned earlier, it really helps to add a 0.1uF capcitor between **Analog Pin A0** and **Ground**.
+In this sample, the purple line shows the impact of the capacitor compared to the original in blue.
+
+![voltage_fluctuations](images/voltage_fluctuations.png)
+
+
+##Logging Environmental Data to a SD Card
+
+To finish up, here is one more addition to the project.
+One project that I have in mind is a standalone environmental monitor for my garden - temperature, soil moisture, etc.
+
+I will install the Arduino, etc, in a sealed box that will be left unattended for some period of time.
+As well as the battery running out, I want to check that no moisture gets inside the case and that it does not
+experience extreme temperatures that might damage the system. A cheap and easy way to measure temperature and
+humidity is the [DHT22 sensor](https://www.adafruit.com/products/385) - check out Adafruit's
+[Tutorial](https://learn.adafruit.com/dht/overview) for the details.
+
+In my example code I use **digital pin 5** instead of pin 2, as I am already using that for the Power Off button interrupt.
+
+
+
+##Ideas...
+
+###Power Conservation in Arduino projects
+
+The next stage in my project is to reduce power consumption and extend the battery life.
+
+My starting point for this is excellent Adafruit tutorial on [Low Power Datalogging](https://learn.adafruit.com/low-power-wifi-datalogging/overview)
+from [Tony DiCola](https://learn.adafruit.com/users/tdicola).
+
+
+
+
+
+
+
 
 
 
