@@ -38,7 +38,7 @@ RTC_Millis rtc;
 const int chipSelect = 4;
 
 File logFile;
-char *logFilename = "voltage.csv";
+char *logFilename = "arduino_power_log.csv";
 String logFileHeader = "Timestamp,Voltage,Message";
 String logMessage = "";
 String dataString = "";
