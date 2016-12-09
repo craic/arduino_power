@@ -218,7 +218,7 @@ other alternatives.
 
 Here is what the log data looks like (2000mAh battery - approx 21 hours - in my office, all day and overnight)
 
-![voltage_humidity_temperature](images/voltage_humidity_temperature.png)
+![voltage_humidity_temperature](images/voltage_humidity_temperature_chart.png)
 
 Here is a photo of the complete Arduino stack:
 
@@ -247,7 +247,7 @@ really good.
 Their [200 ml Rectangular box #1520](http://sistemaplastics.com/products/klip-it-rectangular/200ml-rectangular2) can handle a *two* board stack and
 the [400ml Rectangular box #1540](http://sistemaplastics.com/products/klip-it-rectangular/400ml-rectangular) box can handle a *four* board stack.
 
-![sistema_case](images/sistem_case.png)
+![sistema_case](images/sistema_case.png)
 
 Add a bit of foam or something like that to hold your project in place. The plastic is easy to work with if you want to
 drill holes, etc.
