@@ -60,7 +60,7 @@ In the example here I am going to use pin **A0**, which is the innermost of the 
 
 &nbsp;
 
-## Bonus tip: Using the PowerBoost shield with the Adafruit Metro
+##Bonus tip: Using the PowerBoost shield with the Adafruit Metro
 
 The standard Arduino Uno comes with headers already attached which means that you can only stack shields on top, not below.
 Adafruit make an Arduino clone called the [Adafruit Metro](https://www.adafruit.com/products/2466) which works just

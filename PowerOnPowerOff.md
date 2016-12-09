@@ -143,7 +143,23 @@ circuit uses an external interrupt and that only works, in this basic version, w
 
 ##Circuit using a PowerBoost Breakout Board
 
-*to be added*
+*INCOMPLETE*
+
+You can use the PowerBoost breakout boards instead of the Shield (I'll try and get that circuit written up soon...)
+**BUT** you need to feed that power to the Arduino via the **USB port** and that cable makes the
+system a bit bulky.
+
+In principle you could feed the 5V output of the PowerBoost to the 5V pin on the Arduino ... **Don't do this**
+
+If you compare the schematics for the PowerBoost Shield and Boards you will see that they add a **Schottky diode**
+on the shield (and a fuse, I think). Without that, you risk putting 5.2V onto the Arduino, sidestepping its
+voltage controller, and possibly causing damage.
+
+Passing the Powerboost output through the USB port ensures that it is controlled by the Arduino's circuit, which
+(I think) includes a fuse)...
+
+More to folllow when I get the chance...
+
 
 &nbsp;
 ##[Back to the README](README.md)
