@@ -42,6 +42,9 @@ I will introduce each of these in turn, but the common thread to all of them is 
 With each of these you add and customize two functions, *arduinoPowerSetup() and arduinoPowerMonitor()*, to the standard *setup() and loop()*
 functions in your code.
 
+These circuits have been tested on the Arduino Uno and the Adafruit Metro (an Arduino clone).
+
+
 ## Adafruit PowerBoost Shield
 
 The system uses a rechargeable LiPoly Battery and an [Adafruit PowerBoost Charger Shield](https://www.adafruit.com/products/2078),
@@ -170,7 +173,7 @@ the battery status, but this is not necessary.
 Because we are logging data to the card, it is important that we log a shutdown message. That way we can
 tell if the shutdown was intentional or whether some error happened to the system.
 
-In addition, becauase we are monitoring the voltage, we can check when the voltage drops below some minimum level
+In addition, because we are monitoring the voltage, we can check when the voltage drops below some minimum level
 and safely shutdown the system. Again, we can log a message about that just before the shutdown.
 
 The sketch for this is in [arduino_3_voltage_logging](arduino_3_voltage_logging).
@@ -191,7 +194,7 @@ The decline is not truly linear but, for the purpose of estimating the remaining
 
 ![voltage_vs_time](images/voltage_vs_time.png)
 
-As I mentioned earlier, it really helps to add a 0.1uF capcitor between **Analog Pin A0** and **Ground**.
+As I mentioned earlier, it really helps to add a 0.1uF capacitor between **Analog Pin A0** and **Ground**.
 In this sample, the purple line shows the impact of the capacitor compared to the original in blue.
 
 ![voltage_fluctuations](images/voltage_fluctuations.png)
@@ -244,8 +247,12 @@ It turns out that their small *KLIP IT* containers make great cases for Arduino 
 come with clips and a rubberized seal. I've not tested how weather proof they are in real conditions but they look
 really good.
 
+You can get them on Amazon and I found them in my local drug store in Seattle (Bartell's)
+
 Their [200 ml Rectangular box #1520](http://sistemaplastics.com/products/klip-it-rectangular/200ml-rectangular2) can handle a *two* board stack and
-the [400ml Rectangular box #1540](http://sistemaplastics.com/products/klip-it-rectangular/400ml-rectangular) box can handle a *four* board stack.
+the [400ml Rectangular box #1540](http://sistemaplastics.com/products/klip-it-rectangular/400ml-rectangular) box can handle a *five* board stack.
+
+Here is my monitoring stack in the 400ml case.
 
 ![sistema_case](images/sistema_case.png)
 
