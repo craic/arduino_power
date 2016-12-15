@@ -114,6 +114,7 @@ void arduinoPowerInterrupt() {
   // Log a message to the SD card that the user has shut it down
   logMessage = "User shutdown";
   logDataToFile();
+  logFile.close();
   arduinoPowerShutdown();
 }
 
@@ -170,6 +171,7 @@ void arduinoPowerMonitor() {
   if (fractionalVoltage <= arduinoPowerMinFractionalVoltage) {
     logMessage = "Low battery - shutting down";
     logDataToFile();
+    logFile.close();
     arduinoPowerShutdown();
   }  
 
