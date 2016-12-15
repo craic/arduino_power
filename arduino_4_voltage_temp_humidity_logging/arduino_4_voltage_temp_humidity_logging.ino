@@ -50,7 +50,9 @@ RTC_Millis rtc;
 const int chipSelect = 4;
 
 File logFile;
-char *logFilename = "arduino_power_log.csv";
+// Filename must follow 8.3 format - name is up to 8 characters, suffix up to 3 characters
+// https://en.wikipedia.org/wiki/8.3_filename
+char *logFilename = "voltage.csv";
 String logFileHeader = "Timestamp,Voltage,Humidity,Temperature,Message";
 String logMessage = "";
 String dataString = "";
@@ -247,7 +249,9 @@ void logDataToFile() {
       Serial.println(dataString);
     }
 
-    logFile.flush();
+    if(logMessage != "") {
+      logFile.flush();
+    }
     dataString = "";
     logMessage = "";
   }
@@ -317,7 +321,7 @@ void setup() {
   
   // Write the log file CSV format header
   logFile.println(logFileHeader);
-  logFile.flush();
+//  logFile.flush();
 }
 
 
